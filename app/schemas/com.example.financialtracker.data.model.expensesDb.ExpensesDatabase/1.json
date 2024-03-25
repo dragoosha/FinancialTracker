@@ -1,0 +1,55 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "619f497ad7463ec8eea7710494aa4163",
+    "entities": [
+      {
+        "tableName": "expenses_database",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `expenses_category` TEXT NOT NULL DEFAULT '', `expenses_sum` INTEGER NOT NULL DEFAULT 0, `expenses_date` TEXT NOT NULL DEFAULT '00.00.00')",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "expensesCategory",
+            "columnName": "expenses_category",
+            "affinity": "TEXT",
+            "notNull": true,
+            "defaultValue": "''"
+          },
+          {
+            "fieldPath": "expensesSum",
+            "columnName": "expenses_sum",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          },
+          {
+            "fieldPath": "expensesDate",
+            "columnName": "expenses_date",
+            "affinity": "TEXT",
+            "notNull": true,
+            "defaultValue": "'00.00.00'"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '619f497ad7463ec8eea7710494aa4163')"
+    ]
+  }
+}
