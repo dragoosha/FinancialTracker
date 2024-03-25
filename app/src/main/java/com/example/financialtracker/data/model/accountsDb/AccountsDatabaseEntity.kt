@@ -1,9 +1,9 @@
-package com.example.fintrack.data.model.accountsDb
+package com.example.financialtracker.data.model.accountsDb
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.fintrack.domain.model.AccountsModel
+import com.example.financialtracker.domain.model.AccountsModel
 
 @Entity(
     tableName = "accounts_database"

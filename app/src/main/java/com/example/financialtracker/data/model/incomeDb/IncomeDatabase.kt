@@ -1,7 +1,6 @@
-package com.example.fintrack.data.model.incomeDb
+package com.example.financialtracker.data.model.incomeDb
 
 import android.content.Context
-import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase

@@ -1,9 +1,9 @@
-package com.example.fintrack.data.model.incomeDb
+package com.example.financialtracker.data.model.incomeDb
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.fintrack.domain.model.IncomeModel
+import com.example.financialtracker.domain.model.IncomeModel
 
 @Entity(
     tableName = "income_database"

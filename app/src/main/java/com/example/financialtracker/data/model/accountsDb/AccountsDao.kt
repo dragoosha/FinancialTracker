@@ -1,4 +1,4 @@
-package com.example.fintrack.data.model.accountsDb
+package com.example.financialtracker.data.model.accountsDb
 
 import androidx.room.Dao
 import androidx.room.Insert

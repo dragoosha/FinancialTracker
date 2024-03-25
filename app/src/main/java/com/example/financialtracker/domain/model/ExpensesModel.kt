@@ -1,4 +1,4 @@
-package com.example.fintrack.domain.model
+package com.example.financialtracker.domain.model
 
 import java.util.Date
 

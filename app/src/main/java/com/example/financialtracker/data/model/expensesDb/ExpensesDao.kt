@@ -1,8 +1,9 @@
-package com.example.fintrack.data.model.expensesDb
+package com.example.financialtracker.data.model.expensesDb
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import com.example.financialtracker.data.model.expensesDb.ExpensesDatabaseEntity
 
 @Dao
 interface ExpensesDao {
