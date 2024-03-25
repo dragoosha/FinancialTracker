@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/containerExpenses"
+    android:layout_width="match_parent"
+
+    android:layout_height="wrap_content"
+    android:background="@drawable/background"
+    app:layout_constraintTop_toBottomOf="@+id/textViewExpenses"
+    android:paddingBottom="@dimen/margin_fragmentIncome">
+
+
+    <TextView
+        style="@style/DashboardContainerView.titleName"
+        android:id="@+id/textViewGroceries"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/imageGrocery"
+        app:layout_constraintEnd_toEndOf="@+id/imageGrocery"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/title_expensesGroceries" />
+
+    <ImageView
+        style="@style/DashboardContainerView.image"
+        android:id="@+id/imageGrocery"
+        android:src="@drawable/baseline_add_shopping_cart_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewGroceries"/>
+
+    <TextView
+        style="@style/DashboardContainerView.titleSum"
+        android:id="@+id/sumGrocery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_expensesGroceriesSum"
+        app:layout_constraintTop_toBottomOf="@id/imageGrocery"
+        app:layout_constraintStart_toStartOf="@id/imageGrocery"
+        app:layout_constraintEnd_toEndOf="@id/imageGrocery"/>
+
+
+    <TextView
+        style="@style/DashboardContainerView.titleName"
+        android:id="@+id/textViewTransport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/imageTransport"
+        app:layout_constraintEnd_toEndOf="@id/imageTransport"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/title_expensesTransport" />
+
+    <ImageView
+        style="@style/DashboardContainerView.image"
+        android:id="@+id/imageTransport"
+        android:src="@drawable/baseline_emoji_transportation_24"
+        app:layout_constraintStart_toEndOf="@id/imageGrocery"
+        app:layout_constraintTop_toBottomOf="@id/textViewTransport"/>
+
+    <TextView
+        style="@style/DashboardContainerView.titleSum"
+        android:id="@+id/sumTransport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/imageTransport"
+        app:layout_constraintEnd_toEndOf="@id/imageTransport"
+        app:layout_constraintTop_toBottomOf="@id/imageTransport"
+        android:text="@string/title_expensesTransportSum" />
+
+
+    <TextView
+        style="@style/DashboardContainerView.titleName"
+        android:id="@+id/textViewEntertainment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_expensesEntertainment"
+        app:layout_constraintTop_toBottomOf="@+id/sumGrocery"
+        app:layout_constraintStart_toStartOf="@+id/imageEntertainment"
+        app:layout_constraintEnd_toEndOf="@id/imageEntertainment"/>
+
+    <ImageView
+        style="@style/DashboardContainerView.image"
+        android:id="@+id/imageEntertainment"
+        android:src="@drawable/baseline_beach_access_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEntertainment"
+        />
+
+    <TextView
+        style="@style/DashboardContainerView.titleSum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_expensesEntertainmentSum"
+        app:layout_constraintTop_toBottomOf="@id/imageEntertainment"
+        app:layout_constraintStart_toStartOf="@id/imageEntertainment"
+        app:layout_constraintEnd_toEndOf="@id/imageEntertainment"/>
+
+
+    <TextView
+        style="@style/DashboardContainerView.titleName"
+        android:id="@+id/textViewHouse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_expensesHouse"
+        app:layout_constraintTop_toBottomOf="@id/sumTransport"
+        app:layout_constraintStart_toStartOf="@id/imageHouse"
+        app:layout_constraintEnd_toEndOf="@id/imageHouse"
+        />
+
+    <ImageView
+        style="@style/DashboardContainerView.image"
+        android:id="@+id/imageHouse"
+        android:src="@drawable/baseline_house_24"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFood"
+        app:layout_constraintStart_toEndOf="@id/imageFood" />
+
+    <TextView
+        style="@style/DashboardContainerView.titleSum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/imageHouse"
+        app:layout_constraintEnd_toEndOf="@id/imageHouse"
+        app:layout_constraintTop_toBottomOf="@id/imageHouse"
+        android:text="@string/title_expensesHouseSum" />
+
+    <TextView
+        style="@style/DashboardContainerView.titleName"
+        android:id="@+id/textViewOthers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_expensesOthers"
+        app:layout_constraintTop_toBottomOf="@id/sumTransport"
+        app:layout_constraintStart_toStartOf="@id/imageOthers"
+        app:layout_constraintEnd_toEndOf="@id/imageOthers"
+        />
+
+    <ImageView
+        style="@style/DashboardContainerView.image"
+        android:id="@+id/imageOthers"
+        android:src="@drawable/baseline_drag_indicator_24"
+        app:layout_constraintTop_toBottomOf="@+id/textViewHouse"
+        app:layout_constraintStart_toEndOf="@id/imageHouse" />
+
+    <TextView
+        style="@style/DashboardContainerView.titleSum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/imageFood"
+        app:layout_constraintEnd_toEndOf="@id/imageFood"
+        app:layout_constraintTop_toBottomOf="@id/imageFood"
+        android:text="@string/title_expensesFoodSum" />
+
+    <TextView
+        style="@style/DashboardContainerView.titleName"
+        android:id="@+id/textViewFood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_expensesFood"
+        app:layout_constraintTop_toBottomOf="@id/sumTransport"
+        app:layout_constraintStart_toStartOf="@id/imageFood"
+        app:layout_constraintEnd_toEndOf="@id/imageFood"
+        />
+
+    <ImageView
+        style="@style/DashboardContainerView.image"
+        android:id="@+id/imageFood"
+        android:src="@drawable/baseline_fastfood_24"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFood"
+        app:layout_constraintStart_toEndOf="@id/imageEntertainment" />
+
+    <TextView
+        style="@style/DashboardContainerView.titleSum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/imageOthers"
+        app:layout_constraintEnd_toEndOf="@id/imageOthers"
+        app:layout_constraintTop_toBottomOf="@id/imageOthers"
+        android:text="@string/title_expensesOthersSum" />
+
+    <Spinner
+        style="@style/DashboardContainerView.spinner"
+        android:id="@+id/spinnerExpenses"
+        app:layout_constraintTop_toTopOf="@id/textViewTransport" />
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextExpensesSum"
+        style="@style/DashboardContainerView.editTextSpinner"
+        app:layout_constraintBottom_toBottomOf="@id/sumTransport"
+        app:layout_constraintStart_toStartOf="@id/spinnerExpenses" />
+    <EditText
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextExpensesSumMinus"
+        style="@style/DashboardContainerView.editTextSpinner"
+        app:layout_constraintBottom_toTopOf="@+id/editTextExpensesSum"
+        app:layout_constraintStart_toStartOf="@id/spinnerExpenses" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_add_circle_24"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextExpensesSum"
+        app:layout_constraintStart_toEndOf="@+id/editTextExpensesSum"
+        app:layout_constraintTop_toTopOf="@+id/editTextExpensesSum" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_add_circle_24"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextExpensesSumMinus"
+        app:layout_constraintStart_toEndOf="@+id/editTextExpensesSumMinus"
+        app:layout_constraintTop_toTopOf="@+id/editTextExpensesSumMinus" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

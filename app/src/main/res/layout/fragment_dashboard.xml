@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray"
+    tools:context=".presentation.ui.dashboard.DashboardFragment">
+
+    <TextView
+        style="@style/DashboardTextViewLeft"
+        android:id="@+id/textViewIncome"
+        android:text="@string/title_income"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewIncomeSum"
+        android:text="@string/title_incomeSum"
+        style="@style/DashboardTextViewRight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <include layout="@layout/container_income"/>
+
+    <TextView
+        android:id="@+id/textViewAccounts"
+        android:text="@string/title_accounts"
+        style="@style/DashboardTextViewLeft"
+        app:layout_constraintTop_toBottomOf="@+id/containerIncome"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/textViewAccountsSum"
+        android:text="@string/title_accountsSum"
+        style="@style/DashboardTextViewRight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/containerIncome"/>
+
+    <include layout="@layout/container_accounts"/>
+
+    <TextView
+        android:id="@+id/textViewExpenses"
+        style="@style/DashboardTextViewLeft"
+        android:text="@string/title_expenses"
+        app:layout_constraintTop_toBottomOf="@+id/containerAccounts"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/textViewExpensesSum"
+        style="@style/DashboardTextViewRight"
+        android:text="@string/title_expensesSum"
+        app:layout_constraintTop_toBottomOf="@+id/containerAccounts"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <include layout="@layout/container_expenses"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,8 @@
+<resources>
+    <dimen name="activity_horizontal_margin">20dp</dimen>
+    <dimen name="activity_vertical_margin">20dp</dimen>
+    <dimen name="margin_fragmentIncome">20dp</dimen>
+    <dimen name="margin_top_dashboard">15dp</dimen>
+    <dimen name="margin_between_dashboard">25dp</dimen>
+
+</resources>

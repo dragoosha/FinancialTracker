@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/containerIncome"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background"
+    android:paddingBottom="@dimen/margin_fragmentIncome"
+    app:layout_constraintTop_toBottomOf="@+id/textViewIncome">
+
+
+    <TextView
+        style="@style/DashboardContainerView.titleName"
+        android:id="@+id/textViewSalary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/imageSalary"
+        app:layout_constraintEnd_toEndOf="@+id/imageSalary"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/title_incomeSalary"
+        />
+
+    <ImageView
+        style="@style/DashboardContainerView.image"
+        android:id="@+id/imageSalary"
+        android:src="@drawable/baseline_attach_money_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSalary" />
+
+    <TextView
+        style="@style/DashboardContainerView.titleSum"
+        android:id="@+id/textViewSalarySum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_incomeSalarySum"
+        app:layout_constraintTop_toBottomOf="@+id/imageSalary"
+        app:layout_constraintStart_toStartOf="@id/imageSalary"
+        app:layout_constraintEnd_toEndOf="@id/imageSalary"/>
+
+
+    <TextView
+        style="@style/DashboardContainerView.titleName"
+        android:id="@+id/textViewAdditional"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/imageAdditional"
+        app:layout_constraintEnd_toEndOf="@id/imageAdditional"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/title_incomeAdditional" />
+
+    <ImageView
+        style="@style/DashboardContainerView.image"
+        android:id="@+id/imageAdditional"
+        android:src="@drawable/baseline_add_24"
+        app:layout_constraintStart_toEndOf="@id/imageSalary"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAdditional" />
+
+    <TextView
+        style="@style/DashboardContainerView.titleSum"
+        android:id="@+id/sumAdditional"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/imageAdditional"
+        app:layout_constraintEnd_toEndOf="@id/imageAdditional"
+        app:layout_constraintTop_toBottomOf="@id/imageAdditional"
+        android:text="@string/title_incomeAdditionalSum" />
+
+    <Spinner
+        android:id="@+id/spinnerIncome"
+        style="@style/DashboardContainerView.spinner"
+        app:layout_constraintTop_toTopOf="@id/textViewAdditional" />
+    <EditText
+        android:id="@+id/editTextIncomeSumMinus"
+        style="@style/DashboardContainerView.editTextSpinner"
+        app:layout_constraintBottom_toTopOf="@id/editTextIncomeSum"
+        app:layout_constraintStart_toStartOf="@id/spinnerIncome" />
+
+    <EditText
+        android:id="@+id/editTextIncomeSum"
+        style="@style/DashboardContainerView.editTextSpinner"
+        app:layout_constraintBottom_toBottomOf="@id/sumAdditional"
+        app:layout_constraintStart_toStartOf="@id/spinnerIncome" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_add_circle_24"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextIncomeSum"
+        app:layout_constraintStart_toEndOf="@+id/editTextIncomeSum"
+        app:layout_constraintTop_toTopOf="@+id/editTextIncomeSum" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_add_circle_24"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextIncomeSumMinus"
+        app:layout_constraintStart_toEndOf="@+id/editTextIncomeSumMinus"
+        app:layout_constraintTop_toTopOf="@+id/editTextIncomeSumMinus" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

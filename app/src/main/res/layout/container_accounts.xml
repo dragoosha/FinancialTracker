@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/containerAccounts"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background"
+    android:paddingBottom="@dimen/margin_fragmentIncome"
+    app:layout_constraintTop_toBottomOf="@+id/textViewAccounts">
+
+
+    <TextView
+        style="@style/DashboardContainerView.titleName"
+        android:id="@+id/textViewCash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/imageCash"
+        app:layout_constraintEnd_toEndOf="@+id/imageCash"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/title_accountsCash" />
+
+    <ImageView
+        style="@style/DashboardContainerView.image"
+        android:id="@+id/imageCash"
+        android:src="@drawable/baseline_account_balance_wallet_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewCash"/>
+
+    <TextView
+        style="@style/DashboardContainerView.titleSum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/imageCash"
+        app:layout_constraintStart_toStartOf="@id/imageCash"
+        app:layout_constraintEnd_toEndOf="@id/imageCash"
+        android:text="@string/title_accountsCashSum" />
+
+    <TextView
+        style="@style/DashboardContainerView.titleName"
+        android:id="@+id/textViewCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/imageCard"
+        app:layout_constraintEnd_toEndOf="@id/imageCard"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/title_accountsCard" />
+
+    <ImageView
+        style="@style/DashboardContainerView.image"
+        android:id="@+id/imageCard"
+        android:src="@drawable/baseline_credit_card_24"
+        app:layout_constraintStart_toEndOf="@id/imageCash"
+        app:layout_constraintTop_toBottomOf="@id/textViewCard"/>
+
+    <TextView
+        style="@style/DashboardContainerView.titleSum"
+        android:id="@+id/sumCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/imageCard"
+        app:layout_constraintEnd_toEndOf="@id/imageCard"
+        app:layout_constraintTop_toBottomOf="@id/imageCard"
+        android:text="@string/title_accountsCardSum" />
+
+    <Spinner
+        android:id="@+id/spinnerAccounts"
+        style="@style/DashboardContainerView.spinner"
+        app:layout_constraintTop_toTopOf="@id/textViewCard" />
+
+    <EditText
+        android:id="@+id/editTextAccountsSum"
+        style="@style/DashboardContainerView.editTextSpinner"
+        app:layout_constraintBottom_toBottomOf="@id/sumCard"
+        app:layout_constraintStart_toStartOf="@id/spinnerAccounts" />
+
+    <EditText
+        android:id="@+id/editTextAccountsSumMinus"
+        style="@style/DashboardContainerView.editTextSpinner"
+        app:layout_constraintBottom_toTopOf="@+id/editTextAccountsSum"
+        app:layout_constraintStart_toStartOf="@id/spinnerAccounts" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_add_circle_24"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextAccountsSum"
+        app:layout_constraintStart_toEndOf="@+id/editTextAccountsSum"
+        app:layout_constraintTop_toTopOf="@+id/editTextAccountsSum" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_add_circle_24"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextAccountsSumMinus"
+        app:layout_constraintStart_toEndOf="@+id/editTextAccountsSumMinus"
+        app:layout_constraintTop_toTopOf="@+id/editTextAccountsSumMinus" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

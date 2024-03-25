@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">FinTrack</string>
+    <string name="title_home">Dashboard</string>
+    <string name="title_dashboard">History</string>
+    <string name="title_notifications">Report</string>
+    <string name="title_income">Income</string>
+    <string name="title_incomeSum">Sum</string>
+    <string name="title_accounts">Accounts</string>
+    <string name="title_accountsSum">Sum</string>
+    <string name="title_expenses">Expenses</string>
+    <string name="title_expensesSum">Sum</string>
+    <string name="title_incomeSalary">Salary</string>
+    <string name="title_incomeSalarySum">Sum</string>
+    <string name="title_incomeAdditional">Additional</string>
+    <string name="title_incomeAdditionalSum">Sum</string>
+    <string name="title_accountsCash">Cash</string>
+    <string name="title_accountsCashSum">Sum</string>
+    <string name="title_accountsCard">Card</string>
+    <string name="title_accountsCardSum">Sum</string>
+    <string name="title_expensesGroceries">Groceries</string>
+    <string name="title_expensesGroceriesSum">Sum</string>
+    <string name="title_expensesTransport">Transport</string>
+    <string name="title_expensesTransportSum">Sum</string>
+    <string name="title_expensesEntertainment">Entertainment</string>
+    <string name="title_expensesEntertainmentSum">Sum</string>
+    <string name="title_expensesFood">Food</string>
+    <string name="title_expensesFoodSum">Sum</string>
+    <string name="hint_spinner">Enter sum</string>
+    <string name="title_expensesHouse">House</string>
+    <string name="title_expensesHouseSum">Sum</string>
+    <string name="title_expensesOthers">Others</string>
+    <string name="title_expensesOthersSum">Sum</string>
+
+</resources>
