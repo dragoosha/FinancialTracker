@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FinTrack</string>
+    <string name="app_name">FinancialTracker</string>
     <string name="title_home">Dashboard</string>
     <string name="title_dashboard">History</string>
     <string name="title_notifications">Report</string>
