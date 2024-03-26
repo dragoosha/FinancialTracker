@@ -16,7 +16,7 @@ abstract class IncomeDatabase : RoomDatabase() {
 
     companion object {
         private var DB_INSTANCE: IncomeDatabase? = null
-        private const val DATABASE_NAME = "TV_DB"
+        private const val DATABASE_NAME = "income_database"
 
         fun getIncomeDatabaseInstance(context: Context): IncomeDatabase {
             return DB_INSTANCE ?: Room

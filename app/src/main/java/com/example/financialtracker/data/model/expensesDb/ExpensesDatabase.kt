@@ -16,7 +16,7 @@ abstract class ExpensesDatabase : RoomDatabase() {
 
     companion object {
         private var DB_INSTANCE: ExpensesDatabase? = null
-        private const val DATABASE_NAME = "TV_DB"
+        private const val DATABASE_NAME = "expenses_database"
 
         fun getExpensesDatabaseInstance(context: Context): ExpensesDatabase {
             return DB_INSTANCE ?: Room

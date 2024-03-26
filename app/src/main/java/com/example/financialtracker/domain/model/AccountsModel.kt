@@ -4,7 +4,7 @@ import java.util.Date
 
 
 data class AccountsModel(
-    val id: Int,
+    val id: Int = 0,
     val accountsCategory: String,
     val accountsSum: Int,
     val accountsDate: String

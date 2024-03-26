@@ -66,8 +66,12 @@ dependencies {
 
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
+    implementation ("androidx.room:room-rxjava3:2.6.1")
     kapt("androidx.room:room-compiler:2.5.1")
     androidTestImplementation("androidx.room:room-testing:2.6.1")
+
+    implementation ("io.reactivex.rxjava3:rxandroid:3.0.2")
+    implementation ("io.reactivex.rxjava3:rxjava:3.1.5")
 
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.7")

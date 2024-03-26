@@ -71,17 +71,20 @@
         app:layout_constraintTop_toTopOf="@id/textViewAdditional" />
     <EditText
         android:id="@+id/editTextIncomeSumMinus"
+        android:inputType="number"
         style="@style/DashboardContainerView.editTextSpinner"
         app:layout_constraintBottom_toTopOf="@id/editTextIncomeSum"
         app:layout_constraintStart_toStartOf="@id/spinnerIncome" />
 
     <EditText
         android:id="@+id/editTextIncomeSum"
+        android:inputType="number"
         style="@style/DashboardContainerView.editTextSpinner"
         app:layout_constraintBottom_toBottomOf="@id/sumAdditional"
         app:layout_constraintStart_toStartOf="@id/spinnerIncome" />
 
     <ImageView
+        android:id="@+id/addIncomeSum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/baseline_add_circle_24"
