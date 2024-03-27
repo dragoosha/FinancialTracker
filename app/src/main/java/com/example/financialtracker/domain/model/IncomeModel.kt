@@ -8,8 +8,3 @@ class IncomeModel(
     val incomeSum: Int,
     val incomeDate: String
 )
-{
-    override fun toString(): String {
-        return "$id, $incomeCategory, $incomeSum, $incomeDate"
-    }
-}

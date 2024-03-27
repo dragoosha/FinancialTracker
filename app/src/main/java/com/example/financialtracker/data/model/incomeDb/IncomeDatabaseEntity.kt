@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.financialtracker.domain.model.IncomeModel
+import kotlinx.coroutines.flow.Flow
 
 @Entity(
     tableName = "income_database"

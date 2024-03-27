@@ -15,14 +15,11 @@ import com.example.financialtracker.domain.usecase.GetExpensesUseCase
 import com.example.financialtracker.domain.usecase.GetIncomeUseCase
 import com.example.financialtracker.domain.utils.None
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Single
-import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
-import kotlin.math.exp
 
 
 @HiltViewModel
@@ -32,161 +29,88 @@ class DashboardViewModel @Inject constructor(
     private val expensesUseCase: GetExpensesUseCase,
 ) : ViewModel() {
 
-    private var currentTitleIncome: String = "TITLE"
-    private var currentTitleAccounts: String = "TITLE"
-    private var currentTitleExpenses: String = "TITLE"
-    private var incomeSum: Int = 0
-
     private val _incomeData = MutableLiveData<List<IncomeModel>>()
     val incomeData: LiveData<List<IncomeModel>> = _incomeData
+
+    private val _incomeSum = MutableLiveData<String>()
+    val incomeSum: LiveData<String> = _incomeSum
 
     private val _accountsData = MutableLiveData<List<AccountsModel>>()
     val accountsData: LiveData<List<AccountsModel>> = _accountsData
 
+    private val _accountsSum = MutableLiveData<String>()
+    val accountsSum: LiveData<String> = _accountsSum
+
+
     private val _expensesData = MutableLiveData<List<ExpensesModel>>()
     val expensesData: LiveData<List<ExpensesModel>> = _expensesData
 
+    private val _expensesSum = MutableLiveData<String>()
+    val expensesSum: LiveData<String> = _expensesSum
 
     init {
         getAllIncomeData()
         getAllAccountsData()
         getAllExpensesData()
-    }
-
-    suspend fun getIncomeSumParam() : Int {
-        getIncomeSum()
-        Log.d("RxData", "$incomeSum")
-        return incomeSum
+        setUpSums()
     }
 
     private fun getAllExpensesData() {
-        viewModelScope.launch(Dispatchers.Main) {
-//            val expensesData = expensesUseCase.execute(None)
-//            _expensesData.value = expensesData
-            expensesUseCase.execute(None)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe{
-                    expensesData -> _expensesData.value = expensesData
-                }
+        viewModelScope.launch(Dispatchers.IO) {
+            expensesUseCase.execute(None).collect {
+                _expensesData.value = it
+            }
+//            expensesUseCase.calculateExpensesSum().collect {
+//                _expensesSum.value = it.toString()
+//            }
         }
     }
 
     private fun getAllAccountsData() {
-        viewModelScope.launch(Dispatchers.Main) {
-//            val accountsData = accountsUseCase.execute(None)
-//            _accountsData.value = accountsData
-            accountsUseCase.execute(None)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe {
-                    accountsData -> _accountsData.value = accountsData
-                }
+        viewModelScope.launch {
+            accountsUseCase.execute(None).collect {
+                _accountsData.value = it
+            }
+//            accountsUseCase.calculateAccountsSum().collect {
+//                _accountsSum.value = it.toString()
+//            }
         }
     }
 
     private fun getAllIncomeData() {
-        viewModelScope.launch {
-            incomeUseCase.execute(None)
-                .subscribeOn(Schedulers.io()) // Выполнение запроса в фоновом потоке
-                .observeOn(AndroidSchedulers.mainThread()) // Переключение на основной поток для обновления LiveData
-                .subscribe({ incomeData ->
-                    _incomeData.value = incomeData
-                }, { error ->
-                    // Обработка ошибок при загрузке данных
-                })
-        }
-    }
-
-    fun insertIncomeData(sum: Int, date: String) {
-        viewModelScope.launch {
-            withContext(Dispatchers.IO) {
-                val newIncomeModel = IncomeModel(
-                    0,
-                    currentTitleIncome,
-                    sum,
-                    date
-                )
-                incomeUseCase.insert(newIncomeModel)
+        viewModelScope.launch(Dispatchers.Main) {
+            incomeUseCase.execute(None).collect {
+                _incomeData.value = it
             }
         }
     }
 
-    private suspend fun getIncomeSum() {
-        viewModelScope.launch {
-            incomeUseCase.calculateTotalIncome()
-                .subscribeOn(Schedulers.io())
-                .subscribe{
-                    incomeRxSum -> incomeSum = incomeRxSum
-                    Log.d("RxData", "$incomeSum")
-                }
+    private fun setUpSums() {
+        viewModelScope.launch (Dispatchers.Main) {
+            incomeUseCase.calculateIncomeSum().collect {
+                _incomeSum.value = it.toString()
+                Log.d("ThreadsViewModel", Thread.currentThread().toString())
+            }
+            accountsUseCase.calculateAccountsSum().collect {
+                _accountsSum.value = it.toString()
+            }
+            expensesUseCase.calculateExpensesSum().collect {
+                _expensesSum.value = it.toString()
+            }
         }
     }
 
-    val onTitleIncomeSelectedListener = object : AdapterView.OnItemSelectedListener {
-        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-            currentTitleIncome = incomeTitleList[position]
-        }
-
-        override fun onNothingSelected(parent: AdapterView<*>?) {}
-
-    }
-
-    val onTitleExpensesSelectedListener = object : AdapterView.OnItemSelectedListener {
-        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-            currentTitleExpenses = expensesTitleList[position]
-        }
-
-        override fun onNothingSelected(parent: AdapterView<*>?) {}
-
-    }
-
-    val onTitleAccountsSelectedListener = object : AdapterView.OnItemSelectedListener {
-        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-            currentTitleAccounts = accountsTitleList[position]
-        }
-
-        override fun onNothingSelected(parent: AdapterView<*>?) {}
-    }
-
-    companion object {
-
-        val incomeTitleList = listOf(
-            "Salary",
-            "Additional"
-        )
-        val accountsTitleList = listOf(
-            "Cash",
-            "Card"
-        )
-        val expensesTitleList = listOf(
-            "Groceries",
-            "Transport",
-            "Entertainment",
-            "Food",
-            "House",
-            "Others"
-        )
-
-    }
+//    fun insertIncomeData(sum: Int, date: String) {
+//        viewModelScope.launch {
+//            withContext(Dispatchers.IO) {
+//                val newIncomeModel = IncomeModel(
+//                    0,
+//                    currentTitleIncome,
+//                    sum,
+//                    date
+//                )
+//                incomeUseCase.insert(newIncomeModel)
+//            }
+//        }
+//    }
 }
-
-//private fun setUpSpinners() {
-//    binding.difficultySpinner.adapter = SimpleAdapter(
-//        this,
-//        difficultyCases,
-//        android.R.layout.simple_list_item_1,
-//        arrayOf(TITLE_DIFFICULTY),
-//        intArrayOf(android.R.id.text1)
-//    )
-//    binding.difficultySpinner.onItemSelectedListener = viewModel.onDifficultyLevelSelectedListener
-//
-//    binding.resultSpinner.adapter = SimpleAdapter(
-//        this,
-//        resultCases,
-//        android.R.layout.simple_list_item_1,
-//        arrayOf(TITLE_RESULT),
-//        intArrayOf(android.R.id.text1)
-//    )
-//    binding.resultSpinner.onItemSelectedListener = viewModel.onResultSelectedListener
-//}

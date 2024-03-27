@@ -1,40 +1,55 @@
 package com.example.financialtracker.domain.usecase
 
+import android.util.Log
 import com.example.financialtracker.domain.model.IncomeModel
 import com.example.financialtracker.domain.repository.FinancialRepository
 import com.example.financialtracker.domain.utils.BaseUseCase
 import com.example.financialtracker.domain.utils.None
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 
 interface GetIncomeUseCase {
-    suspend fun execute(params: None): Single<List<IncomeModel>>
+    suspend fun execute(params: None): Flow<List<IncomeModel>>
     suspend fun insert(model: IncomeModel)
 
-    suspend fun calculateTotalIncome() : Single<Int>
+    suspend fun calculateIncomeSum(): Flow<Int>
+
+    fun removeAllIncome()
+
 }
 
 class GetIncomeUseCaseImpl @Inject constructor(private val financialRepository: FinancialRepository) :
     GetIncomeUseCase, BaseUseCase<None, List<IncomeModel>, IncomeModel>() {
-    override suspend fun execute(params: None): Single<List<IncomeModel>>{
-        return financialRepository.getIncome()
+    override suspend fun execute(params: None): Flow<List<IncomeModel>> = flow {
+        financialRepository.getIncome()
     }
 
     override suspend fun insert(model: IncomeModel) {
         financialRepository.insertIncome(model)
     }
 
-    override suspend fun calculateTotalIncome(): Single<Int> {
-        return execute(None)
-            .subscribeOn(Schedulers.io())
-            .map { incomeList ->
-                var totalSum = 0
-                incomeList.forEach { income ->
-                    totalSum += income.incomeSum
+    override suspend fun calculateIncomeSum(): Flow<Int> {
+        return withContext(Dispatchers.IO) {
+            financialRepository.getIncome()
+                .map { incomeList ->
+                    incomeList.sumOf {
+                        it.incomeSum
+                    }
                 }
-                totalSum
-            }
+        }
     }
+
+    override fun removeAllIncome() {
+        financialRepository.removeAllIncome()
+    }
+
 }
+

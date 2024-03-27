@@ -9,51 +9,332 @@
 
     <TextView
         style="@style/DashboardTextViewLeft"
-        android:id="@+id/textViewIncome"
+        android:id="@+id/incomeTextView"
         android:text="@string/title_income"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewIncomeSum"
+        android:id="@+id/incomeSumTextView"
         android:text="@string/title_incomeSum"
         style="@style/DashboardTextViewRight"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <include layout="@layout/container_income"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/incomeContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background"
+        app:layout_constraintTop_toBottomOf="@+id/incomeTextView"
+        android:paddingBottom="@dimen/margin_fragmentIncome">
 
     <TextView
-        android:id="@+id/textViewAccounts"
+        style="@style/DashboardContainerView.titleName"
+        android:id="@+id/salaryContainerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/salaryContainerImageView"
+        app:layout_constraintEnd_toEndOf="@+id/salaryContainerImageView"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/title_incomeSalary"
+        />
+
+    <ImageView
+        style="@style/DashboardContainerView.image"
+        android:id="@+id/salaryContainerImageView"
+        android:src="@drawable/baseline_attach_money_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/salaryContainerTextView" />
+
+    <TextView
+        style="@style/DashboardContainerView.titleSum"
+        android:id="@+id/salarySumContainerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_incomeSalarySum"
+        app:layout_constraintTop_toBottomOf="@+id/salaryContainerImageView"
+        app:layout_constraintStart_toStartOf="@id/salaryContainerImageView"
+        app:layout_constraintEnd_toEndOf="@id/salaryContainerImageView"/>
+
+        <TextView
+            style="@style/DashboardContainerView.titleName"
+            android:id="@+id/additionalContainerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/additionalContainerImageView"
+            app:layout_constraintEnd_toEndOf="@id/additionalContainerImageView"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@string/title_incomeAdditional" />
+
+        <ImageView
+            style="@style/DashboardContainerView.image"
+            android:id="@+id/additionalContainerImageView"
+            android:src="@drawable/baseline_add_24"
+            app:layout_constraintStart_toEndOf="@id/salaryContainerImageView"
+            app:layout_constraintTop_toBottomOf="@+id/additionalContainerTextView" />
+
+        <TextView
+            style="@style/DashboardContainerView.titleSum"
+            android:id="@+id/sumAdditionalContainerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/additionalContainerImageView"
+            app:layout_constraintEnd_toEndOf="@id/additionalContainerImageView"
+            app:layout_constraintTop_toBottomOf="@id/additionalContainerImageView"
+            android:text="@string/title_incomeAdditionalSum" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/accountsTextView"
         android:text="@string/title_accounts"
         style="@style/DashboardTextViewLeft"
-        app:layout_constraintTop_toBottomOf="@+id/containerIncome"
+        app:layout_constraintTop_toBottomOf="@+id/incomeContainer"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
-        android:id="@+id/textViewAccountsSum"
+        android:id="@+id/accountsSumTextView"
         android:text="@string/title_accountsSum"
         style="@style/DashboardTextViewRight"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/containerIncome"/>
+        app:layout_constraintTop_toBottomOf="@+id/incomeContainer"/>
 
-    <include layout="@layout/container_accounts"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/accountsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background"
+        app:layout_constraintTop_toBottomOf="@+id/accountsTextView"
+        android:paddingBottom="@dimen/margin_fragmentIncome">
+
+        <TextView
+            android:id="@+id/cashContainerTextView"
+            style="@style/DashboardContainerView.titleName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/title_accountsCash"
+            app:layout_constraintEnd_toEndOf="@+id/cashContainerImageView"
+            app:layout_constraintHorizontal_bias="0.468"
+            app:layout_constraintStart_toStartOf="@+id/cashContainerImageView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            style="@style/DashboardContainerView.image"
+            android:id="@+id/cashContainerImageView"
+            android:src="@drawable/baseline_account_balance_wallet_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cashContainerTextView"/>
+
+        <TextView
+            style="@style/DashboardContainerView.titleSum"
+            android:id="@+id/cashSumContainerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/cashContainerImageView"
+            app:layout_constraintStart_toStartOf="@id/cashContainerImageView"
+            app:layout_constraintEnd_toEndOf="@id/cashContainerImageView"
+            android:text="@string/title_accountsCashSum" />
+
+        <TextView
+            style="@style/DashboardContainerView.titleName"
+            android:id="@+id/cardContainerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/cardContainerImageView"
+            app:layout_constraintEnd_toEndOf="@id/cardContainerImageView"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@string/title_accountsCard" />
+
+        <ImageView
+            style="@style/DashboardContainerView.image"
+            android:id="@+id/cardContainerImageView"
+            android:src="@drawable/baseline_credit_card_24"
+            app:layout_constraintStart_toEndOf="@id/cashContainerImageView"
+            app:layout_constraintTop_toBottomOf="@id/cardContainerTextView"/>
+
+        <TextView
+            style="@style/DashboardContainerView.titleSum"
+            android:id="@+id/cardSumContainerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/cardContainerImageView"
+            app:layout_constraintEnd_toEndOf="@id/cardContainerImageView"
+            app:layout_constraintTop_toBottomOf="@id/cardContainerImageView"
+            android:text="@string/title_accountsCardSum" />
+
+        <TextView
+            style="@style/DashboardContainerView.titleName"
+            android:id="@+id/moneyboxContainerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/moneyBoxContainerImageView"
+            app:layout_constraintEnd_toEndOf="@id/moneyBoxContainerImageView"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@string/title_accountsMoneyBox" />
+
+        <ImageView
+            style="@style/DashboardContainerView.image"
+            android:id="@+id/moneyBoxContainerImageView"
+            android:src="@drawable/baseline_currency_bitcoin_24"
+            app:layout_constraintStart_toEndOf="@id/cardContainerImageView"
+            app:layout_constraintTop_toBottomOf="@id/moneyboxContainerTextView"/>
+
+        <TextView
+            style="@style/DashboardContainerView.titleSum"
+            android:id="@+id/moneyBoxSumContainerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/moneyBoxContainerImageView"
+            app:layout_constraintEnd_toEndOf="@id/moneyBoxContainerImageView"
+            app:layout_constraintTop_toBottomOf="@id/moneyBoxContainerImageView"
+            android:text="@string/title_accountsMoneyBoxSum" />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    <include layout="@layout/container_accounts"/>-->
 
     <TextView
-        android:id="@+id/textViewExpenses"
+        android:id="@+id/expensesTextView"
         style="@style/DashboardTextViewLeft"
         android:text="@string/title_expenses"
-        app:layout_constraintTop_toBottomOf="@+id/containerAccounts"
+        app:layout_constraintTop_toBottomOf="@+id/accountsContainer"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
-        android:id="@+id/textViewExpensesSum"
+        android:id="@+id/expensesSumTextView"
         style="@style/DashboardTextViewRight"
         android:text="@string/title_expensesSum"
-        app:layout_constraintTop_toBottomOf="@+id/containerAccounts"
+        app:layout_constraintTop_toBottomOf="@+id/accountsContainer"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <include layout="@layout/container_expenses"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/expensesContainer"
+        android:layout_width="match_parent"
 
+        android:layout_height="wrap_content"
+        android:background="@drawable/background"
+        app:layout_constraintTop_toBottomOf="@+id/expensesTextView"
+        android:paddingBottom="@dimen/margin_fragmentIncome">
+
+
+        <TextView
+        style="@style/DashboardContainerView.titleName"
+        android:id="@+id/groceryContainerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/groceryContainerImageView"
+        app:layout_constraintEnd_toEndOf="@+id/groceryContainerImageView"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/title_expensesGroceries" />
+
+        <ImageView
+            style="@style/DashboardContainerView.image"
+            android:id="@+id/groceryContainerImageView"
+            android:src="@drawable/baseline_add_shopping_cart_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/groceryContainerTextView"/>
+
+        <TextView
+            style="@style/DashboardContainerView.titleSum"
+            android:id="@+id/grocerySumContainerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_expensesGroceriesSum"
+            app:layout_constraintTop_toBottomOf="@id/groceryContainerImageView"
+            app:layout_constraintStart_toStartOf="@id/groceryContainerImageView"
+            app:layout_constraintEnd_toEndOf="@id/groceryContainerImageView"/>
+
+
+        <TextView
+            style="@style/DashboardContainerView.titleName"
+            android:id="@+id/transportContainerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/transportContainerImageView"
+            app:layout_constraintEnd_toEndOf="@id/transportContainerImageView"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@string/title_expensesTransport" />
+
+        <ImageView
+            style="@style/DashboardContainerView.image"
+            android:id="@+id/transportContainerImageView"
+            android:src="@drawable/baseline_emoji_transportation_24"
+            app:layout_constraintStart_toEndOf="@id/groceryContainerImageView"
+            app:layout_constraintTop_toBottomOf="@id/transportContainerTextView"/>
+
+        <TextView
+            style="@style/DashboardContainerView.titleSum"
+            android:id="@+id/transportSumContainerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/transportContainerImageView"
+            app:layout_constraintEnd_toEndOf="@id/transportContainerImageView"
+            app:layout_constraintTop_toBottomOf="@id/transportContainerImageView"
+            android:text="@string/title_expensesTransportSum" />
+
+
+        <TextView
+            style="@style/DashboardContainerView.titleName"
+            android:id="@+id/entertainmentContainerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_expensesEntertainment"
+            app:layout_constraintStart_toStartOf="@+id/entertainmentContainerImageView"
+            app:layout_constraintEnd_toEndOf="@+id/entertainmentContainerImageView"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+            style="@style/DashboardContainerView.image"
+            android:id="@+id/entertainmentContainerImageView"
+            android:src="@drawable/baseline_beach_access_24"
+            app:layout_constraintStart_toEndOf="@+id/transportContainerImageView"
+            app:layout_constraintTop_toTopOf="@+id/transportContainerImageView"
+            />
+
+        <TextView
+            style="@style/DashboardContainerView.titleSum"
+            android:id="@+id/entertainmentSumContainerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_expensesEntertainmentSum"
+            app:layout_constraintTop_toBottomOf="@id/entertainmentContainerImageView"
+            app:layout_constraintStart_toStartOf="@id/entertainmentContainerImageView"
+            app:layout_constraintEnd_toEndOf="@id/entertainmentContainerImageView"/>
+
+        <TextView
+            style="@style/DashboardContainerView.titleName"
+            android:id="@+id/othersContainerTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_expensesOthers"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/othersContainerImageView"
+            app:layout_constraintEnd_toEndOf="@+id/othersContainerImageView"
+            />
+
+        <ImageView
+            style="@style/DashboardContainerView.image"
+            android:id="@+id/othersContainerImageView"
+            android:src="@drawable/baseline_drag_indicator_24"
+            app:layout_constraintStart_toEndOf="@+id/entertainmentContainerImageView"
+            app:layout_constraintTop_toTopOf="@+id/entertainmentContainerImageView"/>
+
+        <TextView
+            style="@style/DashboardContainerView.titleSum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/othersContainerImageView"
+            app:layout_constraintEnd_toEndOf="@id/othersContainerImageView"
+            app:layout_constraintTop_toBottomOf="@id/othersContainerImageView"
+            android:text="@string/title_expensesFoodSum" />/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

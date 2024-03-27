@@ -1,74 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/containerIncome"
+    android:id="@+id/incomeContainer"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/background"
     android:paddingBottom="@dimen/margin_fragmentIncome"
-    app:layout_constraintTop_toBottomOf="@+id/textViewIncome">
+    app:layout_constraintTop_toBottomOf="@+id/incomeTextView">
 
 
     <TextView
         style="@style/DashboardContainerView.titleName"
-        android:id="@+id/textViewSalary"
+        android:id="@+id/salaryContainerTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@+id/imageSalary"
-        app:layout_constraintEnd_toEndOf="@+id/imageSalary"
+        app:layout_constraintStart_toStartOf="@+id/salaryContainerImageView"
+        app:layout_constraintEnd_toEndOf="@+id/salaryContainerImageView"
         app:layout_constraintTop_toTopOf="parent"
         android:text="@string/title_incomeSalary"
         />
 
     <ImageView
         style="@style/DashboardContainerView.image"
-        android:id="@+id/imageSalary"
+        android:id="@+id/salaryContainerImageView"
         android:src="@drawable/baseline_attach_money_24"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSalary" />
+        app:layout_constraintTop_toBottomOf="@+id/salaryContainerTextView" />
 
     <TextView
         style="@style/DashboardContainerView.titleSum"
-        android:id="@+id/textViewSalarySum"
+        android:id="@+id/salarySumContainerTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/title_incomeSalarySum"
-        app:layout_constraintTop_toBottomOf="@+id/imageSalary"
-        app:layout_constraintStart_toStartOf="@id/imageSalary"
-        app:layout_constraintEnd_toEndOf="@id/imageSalary"/>
+        app:layout_constraintTop_toBottomOf="@+id/salaryContainerImageView"
+        app:layout_constraintStart_toStartOf="@id/salaryContainerImageView"
+        app:layout_constraintEnd_toEndOf="@id/salaryContainerImageView"/>
 
 
     <TextView
         style="@style/DashboardContainerView.titleName"
-        android:id="@+id/textViewAdditional"
+        android:id="@+id/additionalContainerTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/imageAdditional"
-        app:layout_constraintEnd_toEndOf="@id/imageAdditional"
+        app:layout_constraintStart_toStartOf="@id/additionalContainerImageView"
+        app:layout_constraintEnd_toEndOf="@id/additionalContainerImageView"
         app:layout_constraintTop_toTopOf="parent"
         android:text="@string/title_incomeAdditional" />
 
     <ImageView
         style="@style/DashboardContainerView.image"
-        android:id="@+id/imageAdditional"
+        android:id="@+id/additionalContainerImageView"
         android:src="@drawable/baseline_add_24"
-        app:layout_constraintStart_toEndOf="@id/imageSalary"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAdditional" />
+        app:layout_constraintStart_toEndOf="@id/salaryContainerImageView"
+        app:layout_constraintTop_toBottomOf="@+id/additionalContainerTextView" />
 
     <TextView
         style="@style/DashboardContainerView.titleSum"
-        android:id="@+id/sumAdditional"
+        android:id="@+id/sumAdditionalContainerTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/imageAdditional"
-        app:layout_constraintEnd_toEndOf="@id/imageAdditional"
-        app:layout_constraintTop_toBottomOf="@id/imageAdditional"
+        app:layout_constraintStart_toStartOf="@id/additionalContainerImageView"
+        app:layout_constraintEnd_toEndOf="@id/additionalContainerImageView"
+        app:layout_constraintTop_toBottomOf="@id/additionalContainerImageView"
         android:text="@string/title_incomeAdditionalSum" />
 
     <Spinner
         android:id="@+id/spinnerIncome"
         style="@style/DashboardContainerView.spinner"
-        app:layout_constraintTop_toTopOf="@id/textViewAdditional" />
+        app:layout_constraintTop_toTopOf="@id/additionalContainerTextView" />
     <EditText
         android:id="@+id/editTextIncomeSumMinus"
         android:inputType="number"
@@ -80,7 +80,7 @@
         android:id="@+id/editTextIncomeSum"
         android:inputType="number"
         style="@style/DashboardContainerView.editTextSpinner"
-        app:layout_constraintBottom_toBottomOf="@id/sumAdditional"
+        app:layout_constraintBottom_toBottomOf="@id/sumAdditionalContainerTextView"
         app:layout_constraintStart_toStartOf="@id/spinnerIncome" />
 
     <ImageView

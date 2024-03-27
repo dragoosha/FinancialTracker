@@ -15,6 +15,9 @@ import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+
 
 class FinancialRepositoryImpl @Inject constructor(
     private val incomeDao: IncomeDao,
@@ -22,28 +25,32 @@ class FinancialRepositoryImpl @Inject constructor(
     private val expensesDao: ExpensesDao
 ) : FinancialRepository {
 
-    override suspend fun getIncome(): Single<List<IncomeModel>> {
-        return incomeDao.getIncomeData()
-            .subscribeOn(Schedulers.io())
-            .map { incomeDatabaseEntities ->
-                incomeDatabaseEntities.map { it.toIncomeModel() }
-            }
+    override suspend fun getIncome(): Flow<List<IncomeModel>> {
+        return withContext(Dispatchers.IO) {
+            return@withContext incomeDao.getIncomeData()
+                .map { incomeDatabaseEntity -> incomeDatabaseEntity.map {
+                    it.toIncomeModel() }
+                }
+        }
     }
 
-    override suspend fun getAccounts(): Single<List<AccountsModel>> {
-        return accountsDao.getAccountsData()
-            .subscribeOn(Schedulers.io())
-            .map { accountsDatabaseEntity ->
-                accountsDatabaseEntity.map { it.toAccountsModel() }
-            }
+    override suspend fun getAccounts(): Flow<List<AccountsModel>> {
+        return withContext(Dispatchers.IO) {
+            return@withContext accountsDao.getAccountsData()
+                .map { accountsDatabaseEntity -> accountsDatabaseEntity.map {
+                    it.toAccountsModel() }
+                }
         }
+    }
 
 
-    override suspend fun getExpenses(): Single<List<ExpensesModel>> {
-        return expensesDao.getExpensesData()
-            .subscribeOn(Schedulers.io())
-            .map { expensesDatabaseEntity ->
-                expensesDatabaseEntity.map { it.toExpensesModel() }}
+    override suspend fun getExpenses(): Flow<List<ExpensesModel>> {
+        return withContext(Dispatchers.IO) {
+            return@withContext expensesDao.getExpensesData()
+                .map { expensesDatabaseEntity -> expensesDatabaseEntity.map{
+                    it.toExpensesModel() }
+                }
+        }
     }
 
     override suspend fun insertIncome(incomeModel: IncomeModel) {
@@ -57,4 +64,10 @@ class FinancialRepositoryImpl @Inject constructor(
     override suspend fun insertExpenses(expensesModel: ExpensesModel) {
         expensesDao.insertNewExpensesData(ExpensesDatabaseEntity.from(expensesModel))
     }
+
+    override fun removeAllIncome() {
+        return incomeDao.removeAll()
+    }
+
+
 }

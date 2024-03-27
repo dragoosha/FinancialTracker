@@ -17,6 +17,8 @@
     <string name="title_accountsCashSum">Sum</string>
     <string name="title_accountsCard">Card</string>
     <string name="title_accountsCardSum">Sum</string>
+    <string name="title_accountsMoneyBox">MoneyBox</string>
+    <string name="title_accountsMoneyBoxSum">Sum</string>
     <string name="title_expensesGroceries">Groceries</string>
     <string name="title_expensesGroceriesSum">Sum</string>
     <string name="title_expensesTransport">Transport</string>
