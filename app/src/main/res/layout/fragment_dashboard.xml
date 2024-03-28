@@ -8,7 +8,7 @@
     tools:context=".presentation.ui.dashboard.DashboardFragment">
 
     <TextView
-        style="@style/DashboardTextViewLeft"
+        style="@style/DashboardTextView.left"
         android:id="@+id/incomeTextView"
         android:text="@string/title_income"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,7 +17,7 @@
     <TextView
         android:id="@+id/incomeSumTextView"
         android:text="@string/title_incomeSum"
-        style="@style/DashboardTextViewRight"
+        style="@style/DashboardTextView.right"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -90,14 +90,14 @@
     <TextView
         android:id="@+id/accountsTextView"
         android:text="@string/title_accounts"
-        style="@style/DashboardTextViewLeft"
+        style="@style/DashboardTextView.left"
         app:layout_constraintTop_toBottomOf="@+id/incomeContainer"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
         android:id="@+id/accountsSumTextView"
         android:text="@string/title_accountsSum"
-        style="@style/DashboardTextViewRight"
+        style="@style/DashboardTextView.right"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/incomeContainer"/>
 
@@ -201,14 +201,14 @@
 
     <TextView
         android:id="@+id/expensesTextView"
-        style="@style/DashboardTextViewLeft"
+        style="@style/DashboardTextView.left"
         android:text="@string/title_expenses"
         app:layout_constraintTop_toBottomOf="@+id/accountsContainer"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
         android:id="@+id/expensesSumTextView"
-        style="@style/DashboardTextViewRight"
+        style="@style/DashboardTextView.right"
         android:text="@string/title_expensesSum"
         app:layout_constraintTop_toBottomOf="@+id/accountsContainer"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -332,7 +332,8 @@
             app:layout_constraintStart_toStartOf="@id/othersContainerImageView"
             app:layout_constraintEnd_toEndOf="@id/othersContainerImageView"
             app:layout_constraintTop_toBottomOf="@id/othersContainerImageView"
-            android:text="@string/title_expensesFoodSum" />/>
+            android:text="@string/title_expensesFoodSum" />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

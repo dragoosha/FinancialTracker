@@ -7,6 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.findNavController
+import com.example.financialtracker.R
 import com.example.financialtracker.databinding.FragmentDashboardBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -31,6 +34,7 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val navController = findNavController()
         viewModel.incomeSum.observe(viewLifecycleOwner) {
             binding.incomeSumTextView.text = it
         }
@@ -44,7 +48,10 @@ class DashboardFragment : Fragment() {
         }
 
         binding.salaryContainerImageView.setOnClickListener {
-
+            val navOptions = NavOptions.Builder()
+                .setPopUpTo(R.id.navigation_dashboard, true)
+                .build()
+            navController.navigate(R.id.salaryFragment, null, navOptions)
         }
 
     }

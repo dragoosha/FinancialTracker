@@ -65,8 +65,8 @@ class FinancialRepositoryImpl @Inject constructor(
         expensesDao.insertNewExpensesData(ExpensesDatabaseEntity.from(expensesModel))
     }
 
-    override fun removeAllIncome() {
-        return incomeDao.removeAll()
+    override fun removeAllIncome(id: Int) {
+        return incomeDao.removeIncomeById(id)
     }
 
 

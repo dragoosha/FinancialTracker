@@ -1,8 +1,6 @@
 package com.example.financialtracker.presentation.ui.dashboard
 
 import android.util.Log
-import android.view.View
-import android.widget.AdapterView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,27 +8,25 @@ import androidx.lifecycle.viewModelScope
 import com.example.financialtracker.domain.model.AccountsModel
 import com.example.financialtracker.domain.model.ExpensesModel
 import com.example.financialtracker.domain.model.IncomeModel
-import com.example.financialtracker.domain.usecase.GetAccountsUseCase
-import com.example.financialtracker.domain.usecase.GetExpensesUseCase
-import com.example.financialtracker.domain.usecase.GetIncomeUseCase
-import com.example.financialtracker.domain.utils.None
+import com.example.financialtracker.domain.usecase.calculateTotalSumUsecases.CalculateAccountsSumUsecase
+import com.example.financialtracker.domain.usecase.calculateTotalSumUsecases.CalculateExpensesUseCase
+import com.example.financialtracker.domain.usecase.calculateTotalSumUsecases.CalculateIncomeSumUseCase
+import com.example.financialtracker.domain.usecase.getUsecases.GetAccountsUseCase
+import com.example.financialtracker.domain.usecase.getUsecases.GetExpensesUseCase
+import com.example.financialtracker.domain.usecase.getUsecases.GetIncomeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 
 @HiltViewModel
 class DashboardViewModel @Inject constructor(
-    private val accountsUseCase: GetAccountsUseCase,
-    private val incomeUseCase: GetIncomeUseCase,
-    private val expensesUseCase: GetExpensesUseCase,
+    private val accountsUseCase: CalculateAccountsSumUsecase,
+    private val incomeUseCase: CalculateIncomeSumUseCase,
+    private val expensesUseCase: CalculateExpensesUseCase,
 ) : ViewModel() {
 
-    private val _incomeData = MutableLiveData<List<IncomeModel>>()
-    val incomeData: LiveData<List<IncomeModel>> = _incomeData
 
     private val _incomeSum = MutableLiveData<String>()
     val incomeSum: LiveData<String> = _incomeSum
@@ -49,52 +45,18 @@ class DashboardViewModel @Inject constructor(
     val expensesSum: LiveData<String> = _expensesSum
 
     init {
-        getAllIncomeData()
-        getAllAccountsData()
-        getAllExpensesData()
         setUpSums()
-    }
-
-    private fun getAllExpensesData() {
-        viewModelScope.launch(Dispatchers.IO) {
-            expensesUseCase.execute(None).collect {
-                _expensesData.value = it
-            }
-//            expensesUseCase.calculateExpensesSum().collect {
-//                _expensesSum.value = it.toString()
-//            }
-        }
-    }
-
-    private fun getAllAccountsData() {
-        viewModelScope.launch {
-            accountsUseCase.execute(None).collect {
-                _accountsData.value = it
-            }
-//            accountsUseCase.calculateAccountsSum().collect {
-//                _accountsSum.value = it.toString()
-//            }
-        }
-    }
-
-    private fun getAllIncomeData() {
-        viewModelScope.launch(Dispatchers.Main) {
-            incomeUseCase.execute(None).collect {
-                _incomeData.value = it
-            }
-        }
     }
 
     private fun setUpSums() {
         viewModelScope.launch (Dispatchers.Main) {
-            incomeUseCase.calculateIncomeSum().collect {
+            incomeUseCase.execute().collect {
                 _incomeSum.value = it.toString()
-                Log.d("ThreadsViewModel", Thread.currentThread().toString())
             }
-            accountsUseCase.calculateAccountsSum().collect {
+            accountsUseCase.execute().collect {
                 _accountsSum.value = it.toString()
             }
-            expensesUseCase.calculateExpensesSum().collect {
+            expensesUseCase.execute().collect {
                 _expensesSum.value = it.toString()
             }
         }
@@ -114,3 +76,26 @@ class DashboardViewModel @Inject constructor(
 //        }
 //    }
 }
+
+//    private fun getAllExpensesData() {
+//        viewModelScope.launch(Dispatchers.IO) {
+//            expensesUseCase.execute(None).collect {
+//                _expensesData.value = it
+//            }
+////            expensesUseCase.calculateExpensesSum().collect {
+////                _expensesSum.value = it.toString()
+////            }
+//        }
+//    }
+//
+//    private fun getAllAccountsData() {
+//        viewModelScope.launch {
+//            accountsUseCase.execute(None).collect {
+//                _accountsData.value = it
+//            }
+////            accountsUseCase.calculateAccountsSum().collect {
+////                _accountsSum.value = it.toString()
+////            }
+//        }
+//    }
+//

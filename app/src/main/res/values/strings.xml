@@ -3,6 +3,7 @@
     <string name="title_home">Dashboard</string>
     <string name="title_dashboard">History</string>
     <string name="title_notifications">Report</string>
+    <string name="title_sum">Sum</string>
     <string name="title_income">Income</string>
     <string name="title_incomeSum">Sum</string>
     <string name="title_accounts">Accounts</string>
@@ -32,5 +33,7 @@
     <string name="title_expensesHouseSum">Sum</string>
     <string name="title_expensesOthers">Others</string>
     <string name="title_expensesOthersSum">Sum</string>
+    <string name="hint_entrySalary">Entry your salary</string>
+    <string name="listOf_salaries">List of salaries</string>
 
 </resources>

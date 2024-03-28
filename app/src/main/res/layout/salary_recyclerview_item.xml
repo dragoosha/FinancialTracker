@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/light_gray"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        style="@style/DashboardTextView.right"
+        android:id="@+id/sumSalaryItemTextView"
+        android:text="@string/title_sum"
+        />
+
+    <TextView
+        style="@style/DashboardTextView.left"
+        android:id="@+id/dateSalaryItemTextView"
+        android:text="Date"
+         />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background"
+        app:layout_constraintTop_toBottomOf="@id/dateSalaryItemTextView"
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_horizontal_margin">
+
+    <ImageView
+        android:id="@+id/salaryItemImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:src="@drawable/baseline_attach_money_24"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/deleteIconItemImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_backspace_24"
+        app:tint="@color/purple_700"
+        app:layout_constraintTop_toBottomOf="@id/salaryItemSumTextView"
+        app:layout_constraintStart_toStartOf="@+id/salaryItemSumTextView"/>
+
+    <TextView
+        android:id="@+id/salaryItemTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_incomeSalary"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/salaryItemImageView"
+        app:layout_constraintStart_toEndOf="@+id/salaryItemImageView"
+        app:layout_constraintTop_toTopOf="@+id/salaryItemImageView"/>
+
+    <TextView
+        android:id="@+id/salaryItemSumTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_sum"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/salaryItemTitleTextView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

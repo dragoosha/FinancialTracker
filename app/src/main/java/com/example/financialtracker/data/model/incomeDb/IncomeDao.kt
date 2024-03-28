@@ -14,7 +14,7 @@ interface IncomeDao {
     @Query("SELECT income_database.id, income_category, income_sum, income_date FROM income_database")
     fun getIncomeData(): Flow<List<IncomeDatabaseEntity>>
 
-    @Query("DELETE FROM income_database")
-    fun removeAll()
+    @Query("DELETE FROM income_database WHERE id = :incomeId")
+    fun removeIncomeById(incomeId : Int)
 
 }
