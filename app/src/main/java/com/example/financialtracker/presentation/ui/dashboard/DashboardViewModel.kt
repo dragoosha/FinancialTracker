@@ -45,57 +45,32 @@ class DashboardViewModel @Inject constructor(
     val expensesSum: LiveData<String> = _expensesSum
 
     init {
-        setUpSums()
+        setUpIncomeSum()
+        setUpAccountsSum()
+        setUpExpensesSum()
     }
 
-    private fun setUpSums() {
-        viewModelScope.launch (Dispatchers.Main) {
-            incomeUseCase.execute().collect {
-                _incomeSum.value = it.toString()
-            }
-            accountsUseCase.execute().collect {
-                _accountsSum.value = it.toString()
-            }
+    private fun setUpExpensesSum() {
+        viewModelScope.launch(Dispatchers.Main) {
             expensesUseCase.execute().collect {
                 _expensesSum.value = it.toString()
             }
         }
     }
 
-//    fun insertIncomeData(sum: Int, date: String) {
-//        viewModelScope.launch {
-//            withContext(Dispatchers.IO) {
-//                val newIncomeModel = IncomeModel(
-//                    0,
-//                    currentTitleIncome,
-//                    sum,
-//                    date
-//                )
-//                incomeUseCase.insert(newIncomeModel)
-//            }
-//        }
-//    }
-}
+    private fun setUpAccountsSum() {
+        viewModelScope.launch(Dispatchers.Main) {
+            accountsUseCase.execute().collect {
+                _accountsSum.value = it.toString()
+            }
+        }
+    }
 
-//    private fun getAllExpensesData() {
-//        viewModelScope.launch(Dispatchers.IO) {
-//            expensesUseCase.execute(None).collect {
-//                _expensesData.value = it
-//            }
-////            expensesUseCase.calculateExpensesSum().collect {
-////                _expensesSum.value = it.toString()
-////            }
-//        }
-//    }
-//
-//    private fun getAllAccountsData() {
-//        viewModelScope.launch {
-//            accountsUseCase.execute(None).collect {
-//                _accountsData.value = it
-//            }
-////            accountsUseCase.calculateAccountsSum().collect {
-////                _accountsSum.value = it.toString()
-////            }
-//        }
-//    }
-//
+    private fun setUpIncomeSum() {
+        viewModelScope.launch(Dispatchers.Main) {
+            incomeUseCase.execute().collect {
+                _incomeSum.value = it.toString()
+            }
+        }
+    }
+}

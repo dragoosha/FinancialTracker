@@ -1,4 +1,4 @@
-package com.example.financialtracker.presentation.ui.dashboard.salary
+package com.example.financialtracker.presentation.ui.dashboard.additional
 
 import android.os.Build
 import android.os.Bundle
@@ -11,21 +11,21 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.financialtracker.R
-import com.example.financialtracker.databinding.FragmentSalaryBinding
+import com.example.financialtracker.databinding.FragmentAdditionalBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SalaryFragment : Fragment() {
+class AdditionalFragment : Fragment() {
 
-    private lateinit var binding: FragmentSalaryBinding
-    private val viewModel: SalaryViewModel by viewModels()
+    private lateinit var binding: FragmentAdditionalBinding
+    private val viewModel: AdditionalViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentSalaryBinding.inflate(inflater, container, false)
+        binding = FragmentAdditionalBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -37,19 +37,20 @@ class SalaryFragment : Fragment() {
                     findNavController().popBackStack()
                 }
             })
+
         if (savedInstanceState == null) {
-            val fragment = SalaryRecyclerFragment()
+            val fragment = AdditionalRecyclerFragment()
             childFragmentManager.beginTransaction()
                 .replace(R.id.fragment_recyclerView, fragment)
                 .commit()
         }
 
         viewModel.incomeSum.observe(viewLifecycleOwner){
-            binding.salaryFragmentTextView.text = it
+            binding.additionalSalarySumTextView.text = it
         }
 
-        binding.addSalaryFragmentImageView.setOnClickListener {
-            viewModel.addSalaryFragmentImageClicked(binding.salaryFragmentEditText.text)
+        binding.addAdditionalFragmentImageView.setOnClickListener {
+            viewModel.addSalaryFragmentImageClicked(binding.additionalFragmentEditText.text)
         }
 
     }

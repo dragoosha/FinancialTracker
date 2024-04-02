@@ -7,3 +7,9 @@ data class AccountsModel(
     val accountsSum: Int,
     val accountsDate: String
 )
+{
+    override fun toString(): String {
+        return "id : $id" +
+                "sum: $accountsSum"
+    }
+}

@@ -1,33 +1,35 @@
-package com.example.financialtracker.presentation.ui.dashboard.salary
+package com.example.financialtracker.presentation.ui.dashboard.accounts.card
 
 import android.os.Build
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.annotation.RequiresApi
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.financialtracker.R
-import com.example.financialtracker.databinding.FragmentSalaryBinding
+import com.example.financialtracker.databinding.FragmentCardBinding
+import com.example.financialtracker.presentation.ui.dashboard.accounts.utils.AccountsViewModel
+import com.example.financialtracker.presentation.ui.dashboard.additional.AdditionalRecyclerFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SalaryFragment : Fragment() {
+class CardFragment : Fragment() {
 
-    private lateinit var binding: FragmentSalaryBinding
-    private val viewModel: SalaryViewModel by viewModels()
+    private lateinit var binding: FragmentCardBinding
+    private val viewModel: AccountsViewModel by viewModels()
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentSalaryBinding.inflate(inflater, container, false)
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View? {
+        binding = FragmentCardBinding.inflate(inflater, container, false)
         return binding.root
     }
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -37,20 +39,20 @@ class SalaryFragment : Fragment() {
                     findNavController().popBackStack()
                 }
             })
+
         if (savedInstanceState == null) {
-            val fragment = SalaryRecyclerFragment()
+            val fragment = CardRecyclerViewFragment()
             childFragmentManager.beginTransaction()
                 .replace(R.id.fragment_recyclerView, fragment)
                 .commit()
         }
 
-        viewModel.incomeSum.observe(viewLifecycleOwner){
-            binding.salaryFragmentTextView.text = it
+        viewModel.accountsTotalSum.observe(viewLifecycleOwner) {
+            binding.cardSumFragmentTextView.text = it
         }
 
-        binding.addSalaryFragmentImageView.setOnClickListener {
-            viewModel.addSalaryFragmentImageClicked(binding.salaryFragmentEditText.text)
+        binding.addCardFragmentImageView.setOnClickListener {
+            viewModel.addCardImageClicked(binding.cardFragmentEditText.text)
         }
-
     }
 }

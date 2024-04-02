@@ -1,13 +1,11 @@
 package com.example.financialtracker.presentation.ui.dashboard
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.financialtracker.R
 import com.example.financialtracker.databinding.FragmentDashboardBinding
@@ -48,10 +46,26 @@ class DashboardFragment : Fragment() {
         }
 
         binding.salaryContainerImageView.setOnClickListener {
-            val navOptions = NavOptions.Builder()
-                .setPopUpTo(R.id.navigation_dashboard, true)
-                .build()
-            navController.navigate(R.id.salaryFragment, null, navOptions)
+            navController.navigate(R.id.salaryFragment)
+//            onbackpressed activity nav cotrlloer
+//                    onsupportnavigation up
+//                    setupwithtoolbar(toolbar)
+        }
+
+        binding.additionalContainerImageView.setOnClickListener {
+            navController.navigate(R.id.additionalFragment)
+        }
+
+        binding.cardContainerImageView.setOnClickListener {
+            navController.navigate(R.id.cardFragment)
+        }
+
+        binding.cashContainerImageView.setOnClickListener {
+            navController.navigate(R.id.cashFragment)
+        }
+
+        binding.moneyBoxContainerImageView.setOnClickListener {
+            navController.navigate(R.id.moneyboxFragment)
         }
 
     }

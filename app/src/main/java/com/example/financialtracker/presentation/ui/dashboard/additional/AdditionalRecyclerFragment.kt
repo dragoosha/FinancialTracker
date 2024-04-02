@@ -1,4 +1,4 @@
-package com.example.financialtracker.presentation.ui.dashboard.salary
+package com.example.financialtracker.presentation.ui.dashboard.additional
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,11 +12,11 @@ import com.example.financialtracker.databinding.FragmentRecyclerviewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SalaryRecyclerFragment : Fragment(), SalaryListener {
+class AdditionalRecyclerFragment : Fragment(), AdditionalListener {
 
     private lateinit var binding: FragmentRecyclerviewBinding
-    private val viewModel: SalaryRecyclerViewModel by viewModels()
-    private val adapter: SalaryAdapter = SalaryAdapter(this)
+    private val viewModel: AdditionalRecyclerViewModel by viewModels()
+    private val adapter: AdditionalAdapter = AdditionalAdapter(this)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,12 +31,12 @@ class SalaryRecyclerFragment : Fragment(), SalaryListener {
         super.onViewCreated(view, savedInstanceState)
         binding.fragmentRecyclerView.adapter = adapter
         binding.fragmentRecyclerView.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-        viewModel.incomeDataSalary.observe(viewLifecycleOwner) {
+        viewModel.incomeDataAdditional.observe(viewLifecycleOwner) {
             adapter.incomeData = it
         }
     }
 
-    override fun removeSalary(id: Int) {
+    override fun removeAdditional(id: Int) {
         viewModel.remove(id)
     }
 }

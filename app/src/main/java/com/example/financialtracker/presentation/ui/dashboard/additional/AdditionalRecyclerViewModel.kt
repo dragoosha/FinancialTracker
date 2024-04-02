@@ -1,4 +1,4 @@
-package com.example.financialtracker.presentation.ui.dashboard.salary
+package com.example.financialtracker.presentation.ui.dashboard.additional
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -14,16 +14,16 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SalaryRecyclerViewModel @Inject constructor(
+class AdditionalRecyclerViewModel @Inject constructor(
     private val incomeRemoveUseCase: RemoveIncomeUseCase,
     private val incomeUseCase: GetIncomeUseCase
 ) : ViewModel() {
 
-    private val _incomeDataSalary = MutableLiveData<List<IncomeModel>>()
-    val incomeDataSalary: LiveData<List<IncomeModel>> = _incomeDataSalary
+    private val _incomeDataAdditional = MutableLiveData<List<IncomeModel>>()
+    val incomeDataAdditional: LiveData<List<IncomeModel>> = _incomeDataAdditional
 
     init {
-        getIncomeDataSalary()
+        getIncomeDataAdditional()
     }
     fun remove(id : Int) {
         viewModelScope.launch {
@@ -31,18 +31,16 @@ class SalaryRecyclerViewModel @Inject constructor(
         }
     }
 
-    private fun getIncomeDataSalary() {
+    private fun getIncomeDataAdditional() {
         viewModelScope.launch {
             incomeUseCase.execute(None).collect {
                 val tmpList: MutableList<IncomeModel> = mutableListOf()
                 it.forEach {
-                    if (it.incomeCategory == "Salary") {
+                    if (it.incomeCategory == "Additional") {
                         tmpList.add(it)
-                        Log.d("Viewmodel", "$it")
                     }
-
                 }
-                _incomeDataSalary.value = tmpList.toList()
+                _incomeDataAdditional.value = tmpList.toList()
             }
         }
     }

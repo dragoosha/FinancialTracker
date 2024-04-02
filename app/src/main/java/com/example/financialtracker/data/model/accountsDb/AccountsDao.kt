@@ -15,4 +15,6 @@ interface AccountsDao {
     @Query("SELECT accounts_database.id, accounts_category, accounts_sum, accounts_date FROM accounts_database")
     fun getAccountsData(): Flow<List<AccountsDatabaseEntity>>
 
+    @Query("DELETE FROM accounts_database WHERE id = :accountId")
+    fun removeAccountsById(accountId : Int)
 }

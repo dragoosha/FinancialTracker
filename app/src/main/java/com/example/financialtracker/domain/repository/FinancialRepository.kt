@@ -16,5 +16,6 @@ interface FinancialRepository {
     suspend fun insertAccounts(accountsModel: AccountsModel)
     suspend fun insertExpenses(expensesModel: ExpensesModel)
 
-    fun removeAllIncome(id: Int)
+    fun removeIncome(id: Int)
+    fun removeAccounts(id: Int)
 }

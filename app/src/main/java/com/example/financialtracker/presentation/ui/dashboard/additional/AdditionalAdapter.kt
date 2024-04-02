@@ -1,5 +1,6 @@
-package com.example.financialtracker.presentation.ui.dashboard.salary
+package com.example.financialtracker.presentation.ui.dashboard.additional
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,36 +31,38 @@ class NoteDiffUtil (
         return oldItem == newItem    }
 }
 
-interface SalaryListener {
-    fun removeSalary(id : Int)
+interface AdditionalListener {
+    fun removeAdditional(id : Int)
 }
-class SalaryAdapter (
-    private val salaryListener: SalaryListener,
+
+class AdditionalAdapter (
+    private val additionalListener: AdditionalListener
 ) :
-   RecyclerView.Adapter<SalaryAdapter.SalaryHolder>(), View.OnClickListener{
+   RecyclerView.Adapter<AdditionalAdapter.AdditionalHolder>(), View.OnClickListener{
 
     var incomeData : List<IncomeModel> = emptyList()
         set(newValue) {
             val diffUtil = NoteDiffUtil(field, newValue)
             val diffUtilResult = DiffUtil.calculateDiff(diffUtil)
             field = newValue
-            diffUtilResult.dispatchUpdatesTo(this@SalaryAdapter)
+            diffUtilResult.dispatchUpdatesTo(this@AdditionalAdapter)
         }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SalaryHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdditionalHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = RecyclerviewItemBinding.inflate(inflater, parent, false)
         binding.deleteIconItemImageView.setOnClickListener(this)
 
-        return SalaryHolder(binding)
+
+        return AdditionalHolder(binding)
     }
 
 
     override fun getItemCount(): Int {
         return incomeData.size}
 
-    override fun onBindViewHolder(holder: SalaryHolder, position: Int) {
+    override fun onBindViewHolder(holder: AdditionalHolder, position: Int) {
         val incomeData = incomeData[position]
         with(holder.binding) {
             deleteIconItemImageView.tag = incomeData
@@ -73,11 +76,11 @@ class SalaryAdapter (
 
     override fun onClick(view: View?) {
         val incomeData = view?.tag as IncomeModel
-        salaryListener.removeSalary(incomeData.id)
+        additionalListener.removeAdditional(incomeData.id)
     }
 
 
-    class SalaryHolder(val binding: RecyclerviewItemBinding) :
+    class AdditionalHolder(val binding: RecyclerviewItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
     }
 }

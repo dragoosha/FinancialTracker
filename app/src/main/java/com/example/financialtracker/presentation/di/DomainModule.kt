@@ -13,6 +13,8 @@ import com.example.financialtracker.domain.usecase.getUsecases.GetExpensesUseCas
 import com.example.financialtracker.domain.usecase.getUsecases.GetExpensesUseCaseImpl
 import com.example.financialtracker.domain.usecase.getUsecases.GetIncomeUseCase
 import com.example.financialtracker.domain.usecase.getUsecases.GetIncomeUseCaseImpl
+import com.example.financialtracker.domain.usecase.removeUsecases.RemoveAccountsUseCase
+import com.example.financialtracker.domain.usecase.removeUsecases.RemoveAccountsUseCaseImpl
 import com.example.financialtracker.domain.usecase.removeUsecases.RemoveIncomeUseCase
 import com.example.financialtracker.domain.usecase.removeUsecases.RemoveIncomeUseCaseImpl
 import dagger.Binds
@@ -25,24 +27,35 @@ import dagger.hilt.components.SingletonComponent
 abstract class DomainModule {
 
     @Binds
-    abstract fun bindGetAccountsUseCase(getAccountsUseCaseImpl: GetAccountsUseCaseImpl): GetAccountsUseCase
+    abstract fun bindGetAccountsUseCase(getAccountsUseCaseImpl: GetAccountsUseCaseImpl):
+            GetAccountsUseCase
 
     @Binds
-    abstract fun bindGetExpensesUseCase(getExpensesUseCaseImpl: GetExpensesUseCaseImpl): GetExpensesUseCase
+    abstract fun bindGetExpensesUseCase(getExpensesUseCaseImpl: GetExpensesUseCaseImpl):
+            GetExpensesUseCase
 
     @Binds
-    abstract fun bindGetIncomeUseCase(getIncomeUseCaseImpl: GetIncomeUseCaseImpl): GetIncomeUseCase
+    abstract fun bindGetIncomeUseCase(getIncomeUseCaseImpl: GetIncomeUseCaseImpl):
+            GetIncomeUseCase
 
     @Binds
-    abstract fun bindCalculateAccountsUseCase(calculateAccountsSumUsecaseImpl: CalculateAccountsSumUsecaseImpl): CalculateAccountsSumUsecase
+    abstract fun bindCalculateAccountsUseCase(calculateAccountsSumUsecaseImpl: CalculateAccountsSumUsecaseImpl):
+            CalculateAccountsSumUsecase
 
     @Binds
-    abstract fun bindCalculateExpensesUseCase(calculateExpensesUseCaseImpl: CalculateExpensesUseCaseImpl): CalculateExpensesUseCase
+    abstract fun bindCalculateExpensesUseCase(calculateExpensesUseCaseImpl: CalculateExpensesUseCaseImpl):
+            CalculateExpensesUseCase
 
     @Binds
-    abstract fun bindCalculateIncomeUseCase(calculateIncomeSumUseCaseImpl: CalculateIncomeSumUseCaseImpl): CalculateIncomeSumUseCase
+    abstract fun bindCalculateIncomeUseCase(calculateIncomeSumUseCaseImpl: CalculateIncomeSumUseCaseImpl):
+            CalculateIncomeSumUseCase
 
     @Binds
-    abstract fun bindRemoveIncomeUseCase(removeIncomeUseCaseImpl: RemoveIncomeUseCaseImpl): RemoveIncomeUseCase
+    abstract fun bindRemoveIncomeUseCase(removeIncomeUseCaseImpl: RemoveIncomeUseCaseImpl):
+            RemoveIncomeUseCase
+
+    @Binds
+    abstract fun bindRemoveAccountsUseCase(removeAccountsUseCaseImpl: RemoveAccountsUseCaseImpl):
+            RemoveAccountsUseCase
 
 }

@@ -11,18 +11,47 @@
         android:label="@string/title_home"
         tools:layout="@layout/fragment_dashboard" >
 
-
         <action
             android:id="@+id/action_navigation_dashboard_to_salaryFragment"
-            app:destination="@id/salaryFragment"
-            app:popUpTo="@id/navigation_dashboard"
-            app:popUpToInclusive="true"/>
+            app:destination="@id/salaryFragment" />
+        <action
+            android:id="@+id/action_navigation_dashboard_to_additionalFragment2"
+            app:destination="@id/additionalFragment" />
+        <action
+            android:id="@+id/action_navigation_dashboard_to_cardFragment"
+            app:destination="@id/cardFragment" />
+        <action
+            android:id="@+id/action_navigation_dashboard_to_moneyboxFragment"
+            app:destination="@id/moneyboxFragment" />
+        <action
+            android:id="@+id/action_navigation_dashboard_to_cashFragment"
+            app:destination="@id/cashFragment" />
     </fragment>
     <fragment
         android:id="@+id/salaryFragment"
         android:name="com.example.financialtracker.presentation.ui.dashboard.salary.SalaryFragment"
         android:label="fragment_salary"
         tools:layout="@layout/fragment_salary" />
+    <fragment
+        android:id="@+id/additionalFragment"
+        android:name="com.example.financialtracker.presentation.ui.dashboard.additional.AdditionalFragment"
+        android:label="fragment_additional"
+        tools:layout="@layout/fragment_additional" />
+    <fragment
+        android:id="@+id/cardFragment"
+        android:name="com.example.financialtracker.presentation.ui.dashboard.accounts.card.CardFragment"
+        android:label="fragment_card"
+        tools:layout="@layout/fragment_card" />
+    <fragment
+        android:id="@+id/cashFragment"
+        android:name="com.example.financialtracker.presentation.ui.dashboard.accounts.cash.CashFragment"
+        android:label="fragment_cash"
+        tools:layout="@layout/fragment_cash" />
+    <fragment
+        android:id="@+id/moneyboxFragment"
+        android:name="com.example.financialtracker.presentation.ui.dashboard.accounts.moneybox.MoneyboxFragment"
+        android:label="fragment_moneybox"
+        tools:layout="@layout/fragment_moneybox" />
 
     <!--    <fragment-->
 <!--        android:id="@+id/navigation_history"-->

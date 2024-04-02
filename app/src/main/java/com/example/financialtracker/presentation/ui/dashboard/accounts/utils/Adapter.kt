@@ -1,17 +1,18 @@
-package com.example.financialtracker.presentation.ui.dashboard.salary
-
+package com.example.financialtracker.presentation.ui.dashboard.accounts.utils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.financialtracker.databinding.RecyclerviewItemBinding
+import com.example.financialtracker.domain.model.AccountsModel
 import com.example.financialtracker.domain.model.IncomeModel
 
 
 class NoteDiffUtil (
-    private val oldList: List<IncomeModel>,
-    private val newList: List<IncomeModel>
+    private val oldList: List<AccountsModel>,
+    private val newList: List<AccountsModel>
 ) : DiffUtil.Callback() {
     override fun getOldListSize(): Int {return oldList.size}
 
@@ -30,54 +31,55 @@ class NoteDiffUtil (
         return oldItem == newItem    }
 }
 
-interface SalaryListener {
-    fun removeSalary(id : Int)
+interface Listener {
+    fun remove(id : Int)
 }
-class SalaryAdapter (
-    private val salaryListener: SalaryListener,
+class Adapter (
+    private val listener: Listener,
 ) :
-   RecyclerView.Adapter<SalaryAdapter.SalaryHolder>(), View.OnClickListener{
-
-    var incomeData : List<IncomeModel> = emptyList()
+    RecyclerView.Adapter<Adapter.Holder>(), View.OnClickListener{
+    var accountsData : List<AccountsModel> = emptyList()
         set(newValue) {
             val diffUtil = NoteDiffUtil(field, newValue)
             val diffUtilResult = DiffUtil.calculateDiff(diffUtil)
             field = newValue
-            diffUtilResult.dispatchUpdatesTo(this@SalaryAdapter)
+            diffUtilResult.dispatchUpdatesTo(this@Adapter)
         }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SalaryHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = RecyclerviewItemBinding.inflate(inflater, parent, false)
         binding.deleteIconItemImageView.setOnClickListener(this)
-
-        return SalaryHolder(binding)
+        Log.d("AccountsDataAdapter", "I was created")
+        return Holder(binding)
     }
 
 
     override fun getItemCount(): Int {
-        return incomeData.size}
+        return accountsData.size}
 
-    override fun onBindViewHolder(holder: SalaryHolder, position: Int) {
-        val incomeData = incomeData[position]
+    override fun onBindViewHolder(holder: Holder, position: Int) {
+        val accountsData = accountsData[position]
         with(holder.binding) {
-            deleteIconItemImageView.tag = incomeData
+            Log.d("AccountsDataAdapter", "I was binded")
+            deleteIconItemImageView.tag = accountsData
 
-            dateSalaryItemTextView.text = incomeData.incomeDate
-            salaryItemTitleTextView.text = incomeData.incomeCategory
-            sumSalaryItemTextView.text = incomeData.incomeSum.toString()
+            dateSalaryItemTextView.text = accountsData.accountsDate
+            Log.d("AccountsDataAdapter", accountsData.accountsDate)
+            salaryItemTitleTextView.text = accountsData.accountsCategory
+            sumSalaryItemTextView.text = accountsData.accountsSum.toString()
         }
     }
 
 
     override fun onClick(view: View?) {
-        val incomeData = view?.tag as IncomeModel
-        salaryListener.removeSalary(incomeData.id)
+        val accountsData = view?.tag as AccountsModel
+        listener.remove(accountsData.id)
     }
 
 
-    class SalaryHolder(val binding: RecyclerviewItemBinding) :
+    class Holder(val binding: RecyclerviewItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
     }
 }

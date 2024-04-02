@@ -11,8 +11,6 @@ import com.example.financialtracker.domain.model.ExpensesModel
 import com.example.financialtracker.domain.model.IncomeModel
 import com.example.financialtracker.domain.repository.FinancialRepository
 import kotlinx.coroutines.Dispatchers
-import io.reactivex.rxjava3.core.Single
-import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
@@ -65,8 +63,12 @@ class FinancialRepositoryImpl @Inject constructor(
         expensesDao.insertNewExpensesData(ExpensesDatabaseEntity.from(expensesModel))
     }
 
-    override fun removeAllIncome(id: Int) {
+    override fun removeIncome(id: Int) {
         return incomeDao.removeIncomeById(id)
+    }
+
+    override fun removeAccounts(id: Int) {
+        return accountsDao.removeAccountsById(id)
     }
 
 

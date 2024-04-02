@@ -4,51 +4,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presentation.ui.dashboard.additional.AdditionalFragment">
+    tools:context=".presentation.ui.dashboard.accounts.card.CardFragment">
 
 
     <TextView
-        android:id="@+id/additionalFragmentTextView"
+        android:id="@+id/cashFragmentTextView"
         style="@style/DashboardFragmentTextView.title"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="@string/title_incomeAdditional" />
+        android:text="@string/title_accountsCash" />
 
     <TextView
-        android:id="@+id/additionalSalarySumTextView"
+        android:id="@+id/cashSumFragmentTextView"
         style="@style/DashboardFragmentTextView.title"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="@string/title_incomeSum" />
 
     <EditText
-        android:id="@+id/additionalFragmentEditText"
+        android:id="@+id/cashFragmentEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_entryAdditional"
+        android:hint="@string/hint_entryCash"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/addAdditionalFragmentImageView"
+        app:layout_constraintRight_toLeftOf="@+id/addCashFragmentImageView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/additionalFragmentTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/cashFragmentTextView" />
 
     <ImageView
-        android:id="@+id/addAdditionalFragmentImageView"
+        android:id="@+id/addCashFragmentImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/baseline_add_circle_24"
         app:flow_horizontalBias="0"
-        app:layout_constraintStart_toEndOf="@+id/additionalFragmentEditText"
-        app:layout_constraintTop_toTopOf="@+id/additionalFragmentEditText"
-        app:layout_constraintBottom_toBottomOf="@+id/additionalFragmentEditText"
-        app:layout_constraintLeft_toLeftOf="@id/additionalFragmentEditText"
+        app:layout_constraintStart_toEndOf="@+id/cashFragmentEditText"
+        app:layout_constraintTop_toTopOf="@+id/cashFragmentEditText"
+        app:layout_constraintBottom_toBottomOf="@+id/cashFragmentEditText"
+        app:layout_constraintLeft_toLeftOf="@id/cashFragmentEditText"
         app:tint="@color/purple_700" />
 
     <TextView
         style="@style/DashboardFragmentTextView.list"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:id="@+id/listOfSalariesTitleFragmentTextView"
-        android:text="@string/listOf_additional"
-        app:layout_constraintTop_toBottomOf="@id/additionalFragmentEditText"
-        app:layout_constraintStart_toStartOf="@+id/additionalFragmentTextView"/>
+        android:text="@string/listOf_accounts"
+        app:layout_constraintTop_toBottomOf="@id/addCashFragmentImageView"
+        app:layout_constraintStart_toStartOf="@+id/cashFragmentTextView"/>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_recyclerView"

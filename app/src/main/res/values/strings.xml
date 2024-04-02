@@ -34,6 +34,14 @@
     <string name="title_expensesOthers">Others</string>
     <string name="title_expensesOthersSum">Sum</string>
     <string name="hint_entrySalary">Entry your salary</string>
+    <string name="hint_entryAdditional">Entry additional</string>
+    <string name="hint_entryCard">Entry sum on your card</string>
+    <string name="hint_entryCash">Entry sum on your wallet</string>
+    <string name="hint_entryMoneybox">Entry sum on your Money Box</string>
     <string name="listOf_salaries">List of salaries</string>
+    <string name="listOf_additional">List of additional</string>
+    <string name="listOf_accounts">List of enrollments</string>
+
+
 
 </resources>
