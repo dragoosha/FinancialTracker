@@ -37,12 +37,13 @@ class SalaryFragment : Fragment() {
                     findNavController().popBackStack()
                 }
             })
-        if (savedInstanceState == null) {
+        savedInstanceState?.let {
             val fragment = SalaryRecyclerFragment()
             childFragmentManager.beginTransaction()
                 .replace(R.id.fragment_recyclerView, fragment)
                 .commit()
         }
+
 
         viewModel.incomeSum.observe(viewLifecycleOwner){
             binding.salaryFragmentTextView.text = it

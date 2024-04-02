@@ -1,7 +1,5 @@
 package com.example.financialtracker.domain.model
 
-import java.util.Date
-
 class IncomeModel(
     val id: Int = 0,
     val incomeCategory: String,

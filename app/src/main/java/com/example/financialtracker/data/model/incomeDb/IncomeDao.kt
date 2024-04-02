@@ -4,7 +4,6 @@ package com.example.financialtracker.data.model.incomeDb
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import io.reactivex.rxjava3.core.Single
 import kotlinx.coroutines.flow.Flow
 @Dao
 interface IncomeDao {

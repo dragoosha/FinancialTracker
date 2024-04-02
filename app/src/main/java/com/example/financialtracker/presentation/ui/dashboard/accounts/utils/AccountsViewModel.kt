@@ -2,7 +2,6 @@ package com.example.financialtracker.presentation.ui.dashboard.accounts.utils
 
 import android.os.Build
 import android.text.Editable
-import android.widget.EditText
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

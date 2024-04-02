@@ -5,8 +5,6 @@ import androidx.room.Insert
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 
-import io.reactivex.rxjava3.core.Single
-
 @Dao
 interface AccountsDao {
     @Insert(entity = AccountsDatabaseEntity::class)

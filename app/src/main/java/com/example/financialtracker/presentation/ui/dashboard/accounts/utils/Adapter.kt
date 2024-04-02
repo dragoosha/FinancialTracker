@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.financialtracker.databinding.RecyclerviewItemBinding
 import com.example.financialtracker.domain.model.AccountsModel
-import com.example.financialtracker.domain.model.IncomeModel
 
 
 class NoteDiffUtil (

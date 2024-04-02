@@ -1,14 +1,11 @@
 package com.example.financialtracker.presentation.ui.dashboard.accounts.moneybox
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.example.financialtracker.R
-import com.example.financialtracker.databinding.FragmentCashBinding
 import com.example.financialtracker.databinding.FragmentMoneyboxBinding
 import com.example.financialtracker.presentation.ui.dashboard.accounts.utils.AccountsViewModel
 

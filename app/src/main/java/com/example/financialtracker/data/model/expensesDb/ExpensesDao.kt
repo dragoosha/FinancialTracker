@@ -3,8 +3,6 @@ package com.example.financialtracker.data.model.expensesDb
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.financialtracker.data.model.expensesDb.ExpensesDatabaseEntity
-import io.reactivex.rxjava3.core.Single
 import kotlinx.coroutines.flow.Flow
 
 

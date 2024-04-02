@@ -3,7 +3,6 @@ package com.example.financialtracker.domain.repository
 import com.example.financialtracker.domain.model.AccountsModel
 import com.example.financialtracker.domain.model.ExpensesModel
 import com.example.financialtracker.domain.model.IncomeModel
-import io.reactivex.rxjava3.core.Single
 import kotlinx.coroutines.flow.Flow
 
 interface FinancialRepository {

@@ -13,7 +13,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.financialtracker.R
 import com.example.financialtracker.databinding.FragmentCardBinding
 import com.example.financialtracker.presentation.ui.dashboard.accounts.utils.AccountsViewModel
-import com.example.financialtracker.presentation.ui.dashboard.additional.AdditionalRecyclerFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -40,7 +39,7 @@ class CardFragment : Fragment() {
                 }
             })
 
-        if (savedInstanceState == null) {
+        savedInstanceState?.let {
             val fragment = CardRecyclerViewFragment()
             childFragmentManager.beginTransaction()
                 .replace(R.id.fragment_recyclerView, fragment)

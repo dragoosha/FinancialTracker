@@ -38,7 +38,7 @@ class AdditionalFragment : Fragment() {
                 }
             })
 
-        if (savedInstanceState == null) {
+        savedInstanceState?.let {
             val fragment = AdditionalRecyclerFragment()
             childFragmentManager.beginTransaction()
                 .replace(R.id.fragment_recyclerView, fragment)

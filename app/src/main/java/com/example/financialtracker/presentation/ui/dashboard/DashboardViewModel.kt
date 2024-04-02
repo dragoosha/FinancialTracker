@@ -1,19 +1,14 @@
 package com.example.financialtracker.presentation.ui.dashboard
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.financialtracker.domain.model.AccountsModel
 import com.example.financialtracker.domain.model.ExpensesModel
-import com.example.financialtracker.domain.model.IncomeModel
 import com.example.financialtracker.domain.usecase.calculateTotalSumUsecases.CalculateAccountsSumUsecase
 import com.example.financialtracker.domain.usecase.calculateTotalSumUsecases.CalculateExpensesUseCase
 import com.example.financialtracker.domain.usecase.calculateTotalSumUsecases.CalculateIncomeSumUseCase
-import com.example.financialtracker.domain.usecase.getUsecases.GetAccountsUseCase
-import com.example.financialtracker.domain.usecase.getUsecases.GetExpensesUseCase
-import com.example.financialtracker.domain.usecase.getUsecases.GetIncomeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
